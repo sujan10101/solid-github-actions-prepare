@@ -1,0 +1,277 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f0f2f5;
+  color: #333;
+}
+
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 16px 60px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 1.9rem;
+  color: #2d3748;
+}
+
+/* ── Card ───────────────────────── */
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px 22px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+.card-header {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* ── PUT vs PATCH side by side ── */
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 620px) {
+  .split { grid-template-columns: 1fr; }
+}
+
+/* ── Badges ─────────────────────── */
+.badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.badge.get    { background: #c6f6d5; color: #276749; }
+.badge.post   { background: #bee3f8; color: #2b6cb0; }
+.badge.put    { background: #fefcbf; color: #744210; }
+.badge.patch  { background: #e9d8fd; color: #553c9a; }
+.badge.delete { background: #fed7d7; color: #9b2c2c; }
+
+/* ── Form elements ──────────────── */
+label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #4a5568;
+  margin-bottom: 4px;
+  margin-top: 10px;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  outline: none;
+  transition: border 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+  border-color: #667eea;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  font-weight: 400;
+  color: #4a5568;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #667eea;
+}
+
+.desc {
+  font-size: 0.82rem;
+  color: #718096;
+  line-height: 1.5;
+  margin-bottom: 4px;
+}
+
+.hint {
+  font-size: 0.78rem;
+  color: #a0aec0;
+  font-weight: 400;
+}
+
+/* ── JSON preview box ───────────── */
+.preview-label {
+  font-size: 0.75rem;
+  color: #718096;
+  margin-top: 14px;
+  margin-bottom: 4px;
+}
+
+.preview {
+  background: #1a202c;
+  color: #68d391;
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+  padding: 12px 14px;
+  border-radius: 8px;
+  line-height: 1.6;
+  white-space: pre;
+  margin-bottom: 14px;
+  min-height: 90px;
+}
+
+/* ── Spacer to align PATCH checkbox with PUT's fields ── */
+.patch-spacer {
+  height: 102px;
+}
+
+/* ── Buttons ────────────────────── */
+button {
+  padding: 9px 20px;
+  background: #667eea;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button:hover { background: #5a67d8; }
+
+.btn-delete {
+  background: none;
+  color: #e53e3e;
+  padding: 3px 10px;
+  font-size: 0.78rem;
+  border: 1px solid #fed7d7;
+  border-radius: 6px;
+}
+
+.btn-delete:hover { background: #fff5f5; }
+
+/* ── Todo list ──────────────────── */
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  gap: 10px;
+  transition: background 0.15s;
+}
+
+.todo-item:hover { background: #f7fafc; }
+
+.todo-item.selected { background: #ebf4ff; border: 1px solid #bee3f8; }
+
+.todo-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.todo-id {
+  font-size: 0.72rem;
+  color: #a0aec0;
+  background: #f7fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 5px;
+  padding: 2px 7px;
+  flex-shrink: 0;
+}
+
+.todo-title { font-size: 0.9rem; font-weight: 500; }
+.todo-title.done { text-decoration: line-through; color: #a0aec0; }
+.todo-desc { font-size: 0.78rem; color: #718096; margin-top: 1px; }
+
+.empty { text-align: center; color: #a0aec0; padding: 16px 0; font-size: 0.88rem; }
+
+.todo-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.done-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: #c6f6d5;
+  color: #276749;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+/* PATCH only-field box */
+.patch-only-box {
+  background: #f7fafc;
+  border: 1px dashed #cbd5e0;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 14px 0;
+  text-align: center;
+}
+
+.patch-label {
+  display: block;
+  font-size: 0.78rem;
+  color: #718096;
+  margin-bottom: 10px;
+}
+
+.big-checkbox {
+  justify-content: center;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  color: #2d3748 !important;
+}
+
+.big-checkbox input[type="checkbox"] {
+  width: 20px !important;
+  height: 20px !important;
+}
+
+
+/* ── Toast ──────────────────────── */
+#toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #2d3748;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  max-width: 300px;
+}
+
+#toast.show { opacity: 1; }

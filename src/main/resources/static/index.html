@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Todo App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="container">
+
+  <h1>Todo App</h1>
+
+  <!-- POST -->
+  <div class="card">
+    <div class="card-header"><span class="badge post">POST</span> Add New Todo</div>
+    <input type="text" id="addTitle" placeholder="Title (required)" />
+    <input type="text" id="addDesc" placeholder="Description (optional)" />
+    <button onclick="createTodo()">Add Todo</button>
+  </div>
+
+  <!-- GET -->
+  <div class="card">
+    <div class="card-header">
+      <span class="badge get">GET</span> All Todos
+      <span class="hint">— click a todo to load it into PUT and PATCH</span>
+    </div>
+    <div id="todoList">Loading...</div>
+  </div>
+
+  <!-- PUT vs PATCH side by side -->
+  <div class="split">
+
+    <!-- PUT — all fields -->
+    <div class="card">
+      <div class="card-header"><span class="badge put">PUT</span> Full Update</div>
+      <p class="desc">
+        Replaces <strong>all fields</strong> with what you send.
+        Leave description empty and it gets wiped from the database.
+      </p>
+
+      <label>Editing Todo ID</label>
+      <input type="text" id="putId" placeholder="Click a todo from the list above" readonly style="background:#f7fafc;color:#718096;cursor:default" />
+
+      <label>Title</label>
+      <input type="text" id="putTitle" placeholder="Required" oninput="updatePutPreview()" />
+
+      <label>Description</label>
+      <input type="text" id="putDesc" placeholder="Leave empty = wipes description" oninput="updatePutPreview()" />
+
+      <label class="checkbox-label">
+        <input type="checkbox" id="putCompleted" onchange="updatePutPreview()" /> Completed
+      </label>
+
+      <div class="preview-label">Sends this to the server:</div>
+      <pre id="putPreview" class="preview"></pre>
+
+      <button onclick="updateTodo()">Update (PUT)</button>
+      <input type="hidden" id="putId" />
+    </div>
+
+    <!-- PATCH — completed only -->
+    <div class="card">
+      <div class="card-header"><span class="badge patch">PATCH</span> Partial Update</div>
+      <p class="desc">
+        Only updates <strong>description</strong>.
+        Title and completed are <strong>never touched</strong>.
+      </p>
+
+      <label>Editing Todo ID</label>
+      <input type="text" id="patchId" placeholder="Click a todo from the list above" readonly style="background:#f7fafc;color:#718096;cursor:default" />
+
+      <label>Description</label>
+      <input type="text" id="patchDesc" placeholder="New description only" oninput="updatePatchPreview()" />
+
+      <div class="preview-label">Sends this to the server:</div>
+      <pre id="patchPreview" class="preview"></pre>
+
+      <button onclick="patchTodo()">Update (PATCH)</button>
+      <input type="hidden" id="patchId" />
+    </div>
+
+  </div>
+
+</div>
+
+<div id="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>
