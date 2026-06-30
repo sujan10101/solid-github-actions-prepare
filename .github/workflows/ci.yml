@@ -12,9 +12,9 @@ jobs:
       postgres:
         image: postgres:16
         env:
-          POSTGRES_DB: todo_db        # ← match your app
-          POSTGRES_USER: postgres     # ← match your app
-          POSTGRES_PASSWORD: postgres # ← match your app
+          POSTGRES_DB: todo_db
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
         ports:
           - 5432:5432
         options: >-
@@ -45,8 +45,8 @@ jobs:
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
         with:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_TOKEN }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v6
